@@ -4,13 +4,13 @@ const SparqlClient = require("sparql-client-2").SparqlClient;
 const cors = require("cors");
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000; // ✅ Rất quan trọng cho deploy
 
 app.use(bodyParser.json());
 app.use(cors());
 
 // Cấu hình endpoint của Apache Jena Fuseki
-const FUSEKI_ENDPOINT = "http://localhost:3030/ontology/query"; // Thêm /query vào cuối
+const FUSEKI_ENDPOINT = "http://localhost:3030/ontology/query";
 
 // Kết nối với Apache Jena
 const client = new SparqlClient(FUSEKI_ENDPOINT)
@@ -18,7 +18,7 @@ const client = new SparqlClient(FUSEKI_ENDPOINT)
     rdfs: "http://www.w3.org/2000/01/rdf-schema#",
   });
 
-// API để lấy từ vựng
+// API: Lấy danh sách từ vựng
 app.get("/words", async (req, res) => {
   const query = `
     PREFIX : <http://example.org/language-learning#>
@@ -32,7 +32,6 @@ app.get("/words", async (req, res) => {
 
   try {
     const result = await client.query(query).execute();
-    console.log(result); // Debug log
     res.json(result.results.bindings);
   } catch (err) {
     console.error("SPARQL Query Error:", err);
@@ -41,5 +40,5 @@ app.get("/words", async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Ontology API đang chạy trên http://localhost:${PORT}`);
+  console.log(`Ontology API running on port ${PORT}`);
 });
