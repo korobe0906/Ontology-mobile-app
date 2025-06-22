@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://example.org/language-learning#"
+     xml:base="http://example.org/language-learning"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+     
+    <owl:Ontology rdf:about="http://example.org/language-learning"/>
+
+    <!-- Định nghĩa lớp -->
+    <owl:Class rdf:about="http://example.org/language-learning#Lesson"/>
+    <owl:Class rdf:about="http://example.org/language-learning#Vocabulary"/>
+    <owl:Class rdf:about="http://example.org/language-learning#Grammar"/>
+    
+    <!-- Định nghĩa quan hệ -->
+    <owl:ObjectProperty rdf:about="http://example.org/language-learning#hasVocabulary">
+        <rdfs:domain rdf:resource="http://example.org/language-learning#Lesson"/>
+        <rdfs:range rdf:resource="http://example.org/language-learning#Vocabulary"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://example.org/language-learning#hasGrammar">
+        <rdfs:domain rdf:resource="http://example.org/language-learning#Lesson"/>
+        <rdfs:range rdf:resource="http://example.org/language-learning#Grammar"/>
+    </owl:ObjectProperty>
+
+    <!-- Thêm dữ liệu -->
+    <Lesson rdf:about="http://example.org/language-learning#Lesson1">
+        <hasVocabulary rdf:resource="http://example.org/language-learning#Word1"/>
+        <hasGrammar rdf:resource="http://example.org/language-learning#Grammar1"/>
+    </Lesson>
+
+    <Vocabulary rdf:about="http://example.org/language-learning#Word1">
+        <rdfs:label>Apple</rdfs:label>
+    </Vocabulary>
+
+    <Grammar rdf:about="http://example.org/language-learning#Grammar1">
+        <rdfs:label>Present Simple Tense</rdfs:label>
+    </Grammar>
+
+</rdf:RDF>

@@ -1,0 +1,29 @@
+# Node modules
+**/node_modules/
+
+# Logs
+*.log
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+.env.*
+
+# Build outputs
+**/build/
+**/dist/
+
+# IDE settings
+.vscode/
+.idea/
+
+# Expo
+.expo/
+.expo-shared/
+
+# Android/iOS
+**/android/app/build/
+**/ios/Pods/
